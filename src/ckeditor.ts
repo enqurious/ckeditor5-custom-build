@@ -23,7 +23,6 @@ import { FindAndReplace } from "@ckeditor/ckeditor5-find-and-replace";
 import {
   FontBackgroundColor,
   FontColor,
-  FontFamily,
   FontSize,
 } from "@ckeditor/ckeditor5-font";
 import { Heading } from "@ckeditor/ckeditor5-heading";
@@ -71,7 +70,6 @@ class Editor extends ClassicEditor {
     FindAndReplace,
     FontBackgroundColor,
     FontColor,
-    FontFamily,
     FontSize,
     Heading,
     Highlight,
@@ -132,7 +130,6 @@ class Editor extends ClassicEditor {
         "codeBlock",
         "findAndReplace",
         "fontColor",
-        "fontFamily",
         "fontSize",
         "fontBackgroundColor",
         "highlight",
