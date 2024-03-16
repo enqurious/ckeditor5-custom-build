@@ -1,5 +1,5 @@
 /**
- * @license Copyright (c) 2014-2023, CKSource Holding sp. z o.o. All rights reserved.
+ * @license Copyright (c) 2014-2024, CKSource Holding sp. z o.o. All rights reserved.
  * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
  */
 
@@ -13,6 +13,7 @@ const { bundler, styles } = require("@ckeditor/ckeditor5-dev-utils");
 const {
   CKEditorTranslationsPlugin,
 } = require("@ckeditor/ckeditor5-dev-translations");
+const TerserWebpackPlugin = require("terser-webpack-plugin");
 
 module.exports = {
   devtool: "source-map",
@@ -32,19 +33,16 @@ module.exports = {
 
   optimization: {
     minimizer: [
-      (compiler) => {
-        const TerserWebpackPlugin = require("terser-webpack-plugin");
-        new TerserWebpackPlugin({
-          terserOptions: {
-            sourceMap: true,
-            output: {
-              // Preserve CKEditor 5 license comments.
-              comments: /^!/,
-            },
+      new TerserWebpackPlugin({
+        sourceMap: true,
+        terserOptions: {
+          output: {
+            // Preserve CKEditor 5 license comments.
+            comments: /^!/,
           },
-          extractComments: false,
-        }).apply(compiler);
-      },
+        },
+        extractComments: false,
+      }),
     ],
   },
 
